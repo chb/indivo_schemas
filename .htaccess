@@ -1,0 +1,7 @@
+# stop content negotiation or it will do weird things
+Options -Multiviews
+
+# rewrite just documents to documents.xsd
+RewriteEngine on
+RewriteRule ^documents$ documents.xsd
+
