@@ -1,54 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://indivo.org/vocab/xml/documents#" xmlns:indivo="http://indivo.org/vocab/xml/documents#"
    elementFormDefault="qualified">
-  <xs:element name="Reports">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="Summary" minOccurs="1" maxOccurs="1">
-          <xs:attribute name="total_document_count" use="optional" type="xs:int" />
-          <xs:attribute name="limit" use="optional" type="xs:int" />
-          <xs:attribute name="offset" use="optional" type="xs:int" />
-          <xs:attribute name="order_by" use="optional" type="xs:string"/>
-        </xs:element>
-	<xs:element name="QueryParams" minOccurs="1" maxOccurs="1">
-	  <xs:complexType>
-	    <xs:sequence>
-	      <xs:element name="GroupBy" minOccurs="0" maxOccurs="1">
-		<xs:attribute name="value" use="required" type="xs:string" />
-	      </xs:element>
-	      <xs:element name="DateGroup" minOccurs="0" maxOccurs="1">
-		<xs:attribute name="value" use="required" type="xs:string" />
-	      </xs:element>
-	      <xs:element name="AggregateBy" minOccurs="0" maxOccurs="1">
-		<xs:attribute name="value" use="required" type="xs:string" />
-	      </xs:element>
-	      <xs:element name="DateRange" minOccurs="0" maxOccurs="1">
-		<xs:attribute name="value" use="required" type="xs:string" />
-	      </xs:element>
-	      <xs:element name="Filters" minOccurs="0" maxOccurs="1">
-		<xs:complexType>
-		  <xs:sequence>
-		    <xs:element name="Filter" minOccurs="0" maxOccurs="unbounded">
-		      <xs:attribute name="name" use="required" type="xs:string" />
-		      <xs:attribute name="value" use="required" type="xs:string" />
-		    </xs:element>
-		  </xs:sequence>
-		</xs:complexType>
-	      </xs:element>
-	    </xs:sequence>
-	  </xs:complexType>
-	</xs:element>
-        <xs:element name="Report" type="Report" minOccurs="0" maxOccurs="unbounded"/> 
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
 
   <xs:complexType name="Report">
     <xs:sequence>
       <xs:element name="Meta" minOccurs="1" maxOccurs="1">
 	<xs:complexType>
 	  <xs:sequence>
-	    <xs:element name="Document" type="indivo:Document" minOccurs="1" maxOccurs="1" />
+	    <xs:element name="Document" minOccurs="1" maxOccurs="1" />
 	  </xs:sequence>
 	</xs:complexType>
       </xs:element>
@@ -56,20 +15,75 @@
 	<xs:complexType>
 	  <xs:sequence>
 	    <xs:choice minOccurs="1" maxOccurs="1">
-	      <xs:element name="indivo:Allergy" type="indivo:Allergy" />
-	      <xs:element name="indivo:Equipment" type="indivo:Equipment" />
-	      <xs:element name="indivo:Immunization" type="indivo:Immunization" />
-	      <xs:element name="indivo:LabReport" type="indivo:LabReport" />
-	      <xs:element name="indivo:Medication" type="indivo:Medication" />
-	      <xs:element name="indivo:Problem" type="indivo:Problem" />
-	      <xs:element name="indivo:Procedure" type="indivo:Procedure" />
-	      <xs:element name="indivo:SimpleClinicalNote" type="indivo:SimpleClinicalNote" />
-	      <xs:element name="indivo:VitalSign" type="indivo:VitalSign" />
-	      <xs:element name="indivo:AggregateReport" type="indivo:AggregateReport" />
+	      <xs:element name="Allergy" />
+	      <xs:element name="Equipment" />
+	      <xs:element name="Immunization" />
+	      <xs:element name="LabReport" />
+	      <xs:element name="Medication" />
+	      <xs:element name="Problem" />
+	      <xs:element name="Procedure" />
+	      <xs:element name="SimpleClinicalNote" />
+	      <xs:element name="VitalSign" />
+	      <xs:element name="AggregateReport" />
 	    </xs:choice>
 	  </xs:sequence>
 	</xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+
+  <xs:element name="Reports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Summary" minOccurs="1" maxOccurs="1">
+	  <xs:complexType>
+	    <xs:attribute name="total_document_count" use="optional" type="xs:int" />
+	    <xs:attribute name="limit" use="optional" type="xs:int" />
+	    <xs:attribute name="offset" use="optional" type="xs:int" />
+	    <xs:attribute name="order_by" use="optional" type="xs:string"/>
+	  </xs:complexType>
+        </xs:element>
+	<xs:element name="QueryParams" minOccurs="1" maxOccurs="1">
+	  <xs:complexType>
+	    <xs:sequence>
+	      <xs:element name="GroupBy" minOccurs="0" maxOccurs="1">
+		<xs:complexType>
+		  <xs:attribute name="value" use="required" type="xs:string" />
+		</xs:complexType>
+	      </xs:element>
+	      <xs:element name="DateGroup" minOccurs="0" maxOccurs="1">
+		<xs:complexType>
+		  <xs:attribute name="value" use="required" type="xs:string" />
+		</xs:complexType>
+	      </xs:element>
+	      <xs:element name="AggregateBy" minOccurs="0" maxOccurs="1">
+		<xs:complexType>
+		  <xs:attribute name="value" use="required" type="xs:string" />
+		</xs:complexType>
+	      </xs:element>
+	      <xs:element name="DateRange" minOccurs="0" maxOccurs="1">
+		<xs:complexType>
+		  <xs:attribute name="value" use="required" type="xs:string" />
+		</xs:complexType>
+	      </xs:element>
+	      <xs:element name="Filters" minOccurs="0" maxOccurs="1">
+		<xs:complexType>
+		  <xs:sequence>
+		    <xs:element name="Filter" minOccurs="0" maxOccurs="unbounded">
+		      <xs:complexType>
+			<xs:attribute name="name" use="required" type="xs:string" />
+			<xs:attribute name="value" use="required" type="xs:string" />
+		      </xs:complexType>
+		    </xs:element>
+		  </xs:sequence>
+		</xs:complexType>
+	      </xs:element>
+	    </xs:sequence>
+	  </xs:complexType>
+	</xs:element>
+        <xs:element name="Report" type="indivo:Report" minOccurs="0" maxOccurs="unbounded"/> 
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
 </xs:schema>
