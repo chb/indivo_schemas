@@ -20,9 +20,11 @@ xml_file = open(XML_FILE_NAME, "r")
 schema = etree.XMLSchema(etree.parse(schema_file))
 doc = etree.parse(xml_file)
 
+output = 'Validating %s against %s...   '%(XML_FILE_NAME, SCHEMA_FILE_NAME)
 if schema.validate(doc):
-    print "ok"
+    output += "ok"
 else:
     log = schema.error_log
     error = log.last_error
-    print error
+    output += error
+print output
