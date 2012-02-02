@@ -26,5 +26,5 @@ if schema.validate(doc):
 else:
     log = schema.error_log
     error = log.last_error
-    output += error
+    output += str(error)
 print output
